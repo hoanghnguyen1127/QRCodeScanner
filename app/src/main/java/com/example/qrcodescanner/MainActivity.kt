@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
 
         tvText!!.startAnimation(reveal)
         cardView2!!.startAnimation(reveal)
-        tvText!!.setText("Scan QR Code Here")
+        tvText!!.setText("Scan QR Code")
         cardView2!!.visibility = View.VISIBLE
 
         btnScan!!.setOnClickListener {
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
 
             cardView2!!.visibility = View.GONE
             cardView1!!.visibility = View.VISIBLE
-            tvText!!.setText("Enter QR Code Here")
+            tvText!!.setText("Enter QR Code")
         }
     }
 
