@@ -131,8 +131,6 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
                     edtCode!!.setText("")
                 }
             }
-//        } else {
-//            super.onActivityResult(requestCode, resultCode, data)
         }
 
         if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
