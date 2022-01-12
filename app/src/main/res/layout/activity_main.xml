@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView1"
+        android:id="@+id/startView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -47,13 +47,13 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="10dp"
+                android:inputType="text"
+                android:autofillHints=""
                 android:layout_weight="1"
-                android:hint="Enter Code here"
+                android:hint="@string/enter_code"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:visibility="visible" />
-
-
 
             <Button
                 android:id="@+id/btnEnter"
@@ -62,14 +62,14 @@
                 android:layout_margin="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/light_green"
-                android:text="Enter"
+                android:text="@string/enter"
                 android:textColor="@color/white" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/scanView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:visibility="gone"
@@ -106,7 +106,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@color/light_green"
-            android:text="Scan Code"
+            android:text="@string/scan_code"
             android:textColor="@color/white" />
 
         <Button
@@ -116,7 +116,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@color/dark_green"
-            android:text="Enter Code"
+            android:text="@string/enter_code"
             android:textColor="@color/white" />
 
     </LinearLayout>

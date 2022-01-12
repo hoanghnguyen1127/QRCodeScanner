@@ -21,8 +21,8 @@ import pub.devrel.easypermissions.EasyPermissions
 class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
     EasyPermissions.RationaleCallbacks{
 
-    var cardView1: CardView? = null
-    var cardView2: CardView? = null
+    var startCardView: CardView? = null
+    var scanCardView: CardView? = null
     var btnScan: Button? = null
     var btnEnterCode: Button? = null
     var btnEnter: Button? = null
@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        cardView1 = findViewById(R.id.cardView1)
-        cardView2 = findViewById(R.id.cardView2)
+        startCardView = findViewById(R.id.startView)
+        scanCardView = findViewById(R.id.scanView)
         btnScan = findViewById(R.id.btnScan)
         btnEnterCode = findViewById(R.id.btnEnterCode)
         btnEnter = findViewById(R.id.btnEnter)
@@ -47,21 +47,21 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
         reveal = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
 
         tvText!!.startAnimation(reveal)
-        cardView2!!.startAnimation(reveal)
+        scanCardView!!.startAnimation(reveal)
         tvText!!.setText("Scan QR Code")
-        cardView2!!.visibility = View.VISIBLE
+        scanCardView!!.visibility = View.VISIBLE
 
         btnScan!!.setOnClickListener {
             tvText!!.startAnimation(reveal)
-            cardView1!!.startAnimation(hide)
-            cardView2!!.startAnimation(reveal)
+            startCardView!!.startAnimation(hide)
+            scanCardView!!.startAnimation(reveal)
 
-            cardView2!!.visibility = View.VISIBLE
-            cardView1!!.visibility = View.GONE
+            scanCardView!!.visibility = View.VISIBLE
+            startCardView!!.visibility = View.GONE
             tvText!!.setText("Scan QR Code")
         }
 
-        cardView2!!.setOnClickListener {
+        scanCardView!!.setOnClickListener {
             cameraTask()
         }
 
@@ -75,13 +75,14 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
                 Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
             }
         }
+
         btnEnterCode!!.setOnClickListener {
             tvText!!.startAnimation(reveal)
-            cardView1!!.startAnimation(reveal)
-            cardView2!!.startAnimation(hide)
+            startCardView!!.startAnimation(reveal)
+            scanCardView!!.startAnimation(hide)
 
-            cardView2!!.visibility = View.GONE
-            cardView1!!.visibility = View.VISIBLE
+            scanCardView!!.visibility = View.GONE
+            startCardView!!.visibility = View.VISIBLE
             tvText!!.setText("Enter QR Code")
         }
     }
@@ -120,18 +121,18 @@ class MainActivity : AppCompatActivity() , EasyPermissions.PermissionCallbacks,
             } else {
                 try {
 
-                    cardView1!!.startAnimation(reveal)
-                    cardView2!!.startAnimation(hide)
-                    cardView1!!.visibility = View.VISIBLE
-                    cardView2!!.visibility = View.GONE
+                    startCardView!!.startAnimation(reveal)
+                    scanCardView!!.startAnimation(hide)
+                    startCardView!!.visibility = View.VISIBLE
+                    scanCardView!!.visibility = View.GONE
                     edtCode!!.setText(result.contents.toString())
                 } catch (exception: JSONException) {
                     Toast.makeText(this, exception.localizedMessage, Toast.LENGTH_SHORT).show()
                     edtCode!!.setText("")
                 }
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
+//        } else {
+//            super.onActivityResult(requestCode, resultCode, data)
         }
 
         if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
